@@ -5,3 +5,13 @@ services:
 before_install: 
   - docker build -t docker-react -f Dockerfile.dev .
 
+deploy:
+  provider: elasticbeanstalk
+  region: 'eu-central-1'
+  app: 'docker-react'
+  env: 'Docker-react-env'
+  bucket_name: 'elasticbeanstalk-eu-central-1-187906392721'
+  bucket_path: 'docker-react'
+  on: 
+    branch: main
+  access_key_id: $AWS_ACCES_KEY
